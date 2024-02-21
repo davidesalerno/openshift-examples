@@ -8,7 +8,7 @@ When RHODS will be up & running, using the bash script you will create a Minio b
 Install in your cluster the mandatory Operators:
 - Red Hat ServiceMesh
 - Red Hat Serverless
-- Red Hat Data Science
+- Red Hat OpenShift AI
 
 ## Deploy an example model
 

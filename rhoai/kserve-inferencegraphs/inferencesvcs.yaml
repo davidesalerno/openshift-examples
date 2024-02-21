@@ -1,0 +1,29 @@
+apiVersion: "serving.kserve.io/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "cat-dog-classifier"
+spec:
+  predictor:
+    model:
+      modelFormat:
+        name: pytorch
+      resources:
+        requests:
+          cpu: 100m
+      storageUri: gs://kfserving-examples/models/torchserve/cat_dog_classification
+      runtime: kserve-torchserve
+---
+apiVersion: "serving.kserve.io/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "dog-breed-classifier"
+spec:
+  predictor:
+    model:
+      modelFormat:
+        name: pytorch
+      resources:
+        requests:
+          cpu: 100m
+      storageUri: gs://kfserving-examples/models/torchserve/dog_breed_classification
+      runtime: kserve-torchserve

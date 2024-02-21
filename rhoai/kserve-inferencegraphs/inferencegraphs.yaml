@@ -1,0 +1,22 @@
+apiVersion: "serving.kserve.io/v1alpha1"
+kind: "InferenceGraph"
+metadata:
+  name: "dog-breed-pipeline"
+spec:
+  nodes:
+    root:
+      routerType: Sequence
+      steps:
+      - serviceName: cat-dog-classifier
+        name: cat_dog_classifier # step name
+      - serviceName: dog-breed-classifier
+        name: dog_breed_classifier
+        data: $request
+        condition: "[@this].#(predictions.0==\"dog\")"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
